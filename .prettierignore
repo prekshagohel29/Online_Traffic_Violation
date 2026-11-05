@@ -1,0 +1,18 @@
+node_modules/
+build/
+data/
+.venv/
+.git/
+.vercel/
+integration/member3_backend.patch
+models/
+
+# Preserve exact existing JSX child structure
+frontend/src/components/WorkspaceUI.js
+frontend/src/pages/Calibration.js
+frontend/src/pages/CasePage.js
+frontend/src/pages/Evidence.js
+frontend/src/pages/Monitor.js
+frontend/src/pages/ProjectGuide.js
+frontend/src/pages/RTODashboard.js
+frontend/src/pages/UserProfile.js

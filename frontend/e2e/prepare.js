@@ -1,2 +1,15 @@
-const {spawnSync}=require('child_process');const path=require('path');
-module.exports=async()=>{const root=path.resolve(__dirname,'../..');const python=process.platform==='win32'?path.join(root,'.venv/Scripts/python.exe'):path.join(root,'.venv/bin/python');const result=spawnSync(python,['-m','scripts.make_fake_camera'],{cwd:root,encoding:'utf8'});if(result.status!==0)throw new Error('Camera fixture preparation failed: '+result.stderr);};
+const { spawnSync } = require('child_process');
+const path = require('path');
+module.exports = async () => {
+    const root = path.resolve(__dirname, '../..');
+    const python =
+        process.platform === 'win32'
+            ? path.join(root, '.venv/Scripts/python.exe')
+            : path.join(root, '.venv/bin/python');
+    const result = spawnSync(python, ['-m', 'scripts.make_fake_camera'], {
+        cwd: root,
+        encoding: 'utf8',
+    });
+    if (result.status !== 0)
+        throw new Error('Camera fixture preparation failed: ' + result.stderr);
+};

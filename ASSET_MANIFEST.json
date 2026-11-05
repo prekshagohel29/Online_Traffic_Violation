@@ -1,20 +1,20 @@
 [
-  {
-    "file": "models/LICENSE-YOLOX.txt",
-    "url": "https://raw.githubusercontent.com/opencv/opencv_zoo/main/models/object_detection_yolox/LICENSE",
-    "sha256": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
-    "bytes": 11371
-  },
-  {
-    "file": "models/yolox.onnx",
-    "url": "https://media.githubusercontent.com/media/opencv/opencv_zoo/main/models/object_detection_yolox/object_detection_yolox_2022nov.onnx",
-    "sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
-    "bytes": 35858002
-  },
-  {
-    "file": "samples/rush-hour.webm",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Video_Codec_Test_rush_hour_1080p25.y4m.webm",
-    "sha256": "bb587147edb58630b0025b1e86cc2bdfe85fc7caf1f2c8f179e4226749963e76",
-    "bytes": 14122530
-  }
+    {
+        "file": "models/LICENSE-YOLOX.txt",
+        "url": "https://raw.githubusercontent.com/opencv/opencv_zoo/main/models/object_detection_yolox/LICENSE",
+        "sha256": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
+        "bytes": 11371
+    },
+    {
+        "file": "models/yolox.onnx",
+        "url": "https://media.githubusercontent.com/media/opencv/opencv_zoo/main/models/object_detection_yolox/object_detection_yolox_2022nov.onnx",
+        "sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+        "bytes": 35858002
+    },
+    {
+        "file": "samples/rush-hour.webm",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Video_Codec_Test_rush_hour_1080p25.y4m.webm",
+        "sha256": "bb587147edb58630b0025b1e86cc2bdfe85fc7caf1f2c8f179e4226749963e76",
+        "bytes": 14122530
+    }
 ]

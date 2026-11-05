@@ -1,559 +1,331 @@
 {
-  "registrations": 65,
-  "identical": true,
-  "routes": [
-    {
-      "route": "/addViolation",
-      "endpoint": "manual",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/admin/audit",
-      "endpoint": "audit_log",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/admin/devices",
-      "endpoint": "create_device",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/admin/devices/<ident>",
-      "endpoint": "revoke_device",
-      "methods": [
-        "DELETE",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/admin/policy",
-      "endpoint": "policy",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/admin/policy",
-      "endpoint": "set_policy",
-      "methods": [
-        "OPTIONS",
-        "PUT"
-      ]
-    },
-    {
-      "route": "/api/admin/users",
-      "endpoint": "users",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/admin/users/<ident>",
-      "endpoint": "provision",
-      "methods": [
-        "OPTIONS",
-        "PATCH"
-      ]
-    },
-    {
-      "route": "/api/admin/verify",
-      "endpoint": "review",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/auth/login",
-      "endpoint": "login",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/auth/logout",
-      "endpoint": "logout",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/auth/me",
-      "endpoint": "me",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/auth/register",
-      "endpoint": "register",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/candidates/<ident>",
-      "endpoint": "candidate_detail",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/candidates/<ident>/evidence",
-      "endpoint": "attach_evidence",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/candidates/<ident>/evidence/<int:index>",
-      "endpoint": "evidence",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/case-filters",
-      "endpoint": "case_filters",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/cases",
-      "endpoint": "cases",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/cases/<ident>",
-      "endpoint": "case",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/datasets",
-      "endpoint": "datasets",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/datasets/<ident>/example",
-      "endpoint": "dataset_example",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/datasets/<ident>/image",
-      "endpoint": "dataset_image",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/device/candidates",
-      "endpoint": "device_ingest",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/disputes/<ident>/evidence",
-      "endpoint": "attach_dispute_evidence",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/disputes/<ident>/evidence/<int:index>",
-      "endpoint": "dispute_evidence",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/gov/analytics",
-      "endpoint": "analytics",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/memos/<ident>/pdf",
-      "endpoint": "memo_pdf",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/cameras",
-      "endpoint": "add_camera",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/cameras",
-      "endpoint": "cameras",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/cameras/<ident>",
-      "endpoint": "configure",
-      "methods": [
-        "OPTIONS",
-        "PUT"
-      ]
-    },
-    {
-      "route": "/api/operator/candidates",
-      "endpoint": "candidates",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/candidates/<ident>/review",
-      "endpoint": "review",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/disputes",
-      "endpoint": "disputes",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/disputes/<ident>/review",
-      "endpoint": "decide_dispute",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/export",
-      "endpoint": "export_csv",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/health",
-      "endpoint": "operator_health",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/jobs",
-      "endpoint": "jobs",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/jobs/<ident>/cancel",
-      "endpoint": "cancel",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/jobs/<ident>/source",
-      "endpoint": "original_source",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/jobs/<ident>/submit",
-      "endpoint": "submit_job",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/manual",
-      "endpoint": "manual",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/memos",
-      "endpoint": "memos",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/notifications",
-      "endpoint": "notifications",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/ownership",
-      "endpoint": "ownership",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/ownership/<ident>/review",
-      "endpoint": "review_ownership",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/sessions",
-      "endpoint": "start",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/sessions/<ident>",
-      "endpoint": "session_status",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/sessions/<ident>/frames",
-      "endpoint": "frame",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/sessions/<ident>/preview",
-      "endpoint": "preview",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/operator/sessions/<ident>/stop",
-      "endpoint": "stop",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/operator/uploads",
-      "endpoint": "upload_ticket",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/overview",
-      "endpoint": "overview",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/registry",
-      "endpoint": "registry",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/registry",
-      "endpoint": "save_vehicle",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/samples/rush-hour/run",
-      "endpoint": "run_sample",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/uploads/<ident>",
-      "endpoint": "local_upload",
-      "methods": [
-        "OPTIONS",
-        "PUT"
-      ]
-    },
-    {
-      "route": "/api/user/disputes",
-      "endpoint": "dispute",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/user/memos",
-      "endpoint": "user_memos",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/user/pay",
-      "endpoint": "pay",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/api/user/profile",
-      "endpoint": "profile",
-      "methods": [
-        "OPTIONS",
-        "PUT"
-      ]
-    },
-    {
-      "route": "/api/user/vehicles",
-      "endpoint": "vehicles",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/api/user/vehicles/link",
-      "endpoint": "link_vehicle",
-      "methods": [
-        "OPTIONS",
-        "POST"
-      ]
-    },
-    {
-      "route": "/fines",
-      "endpoint": "memos",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/health",
-      "endpoint": "health",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    },
-    {
-      "route": "/ready",
-      "endpoint": "ready",
-      "methods": [
-        "GET",
-        "HEAD",
-        "OPTIONS"
-      ]
-    }
-  ]
+    "registrations": 65,
+    "identical": true,
+    "routes": [
+        {
+            "route": "/addViolation",
+            "endpoint": "manual",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/admin/audit",
+            "endpoint": "audit_log",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/admin/devices",
+            "endpoint": "create_device",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/admin/devices/<ident>",
+            "endpoint": "revoke_device",
+            "methods": ["DELETE", "OPTIONS"]
+        },
+        {
+            "route": "/api/admin/policy",
+            "endpoint": "policy",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/admin/policy",
+            "endpoint": "set_policy",
+            "methods": ["OPTIONS", "PUT"]
+        },
+        {
+            "route": "/api/admin/users",
+            "endpoint": "users",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/admin/users/<ident>",
+            "endpoint": "provision",
+            "methods": ["OPTIONS", "PATCH"]
+        },
+        {
+            "route": "/api/admin/verify",
+            "endpoint": "review",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/auth/login",
+            "endpoint": "login",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/auth/logout",
+            "endpoint": "logout",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/auth/me",
+            "endpoint": "me",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/auth/register",
+            "endpoint": "register",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/candidates/<ident>",
+            "endpoint": "candidate_detail",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/candidates/<ident>/evidence",
+            "endpoint": "attach_evidence",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/candidates/<ident>/evidence/<int:index>",
+            "endpoint": "evidence",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/case-filters",
+            "endpoint": "case_filters",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/cases",
+            "endpoint": "cases",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/cases/<ident>",
+            "endpoint": "case",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/datasets",
+            "endpoint": "datasets",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/datasets/<ident>/example",
+            "endpoint": "dataset_example",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/datasets/<ident>/image",
+            "endpoint": "dataset_image",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/device/candidates",
+            "endpoint": "device_ingest",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/disputes/<ident>/evidence",
+            "endpoint": "attach_dispute_evidence",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/disputes/<ident>/evidence/<int:index>",
+            "endpoint": "dispute_evidence",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/gov/analytics",
+            "endpoint": "analytics",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/memos/<ident>/pdf",
+            "endpoint": "memo_pdf",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/cameras",
+            "endpoint": "add_camera",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/cameras",
+            "endpoint": "cameras",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/cameras/<ident>",
+            "endpoint": "configure",
+            "methods": ["OPTIONS", "PUT"]
+        },
+        {
+            "route": "/api/operator/candidates",
+            "endpoint": "candidates",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/candidates/<ident>/review",
+            "endpoint": "review",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/disputes",
+            "endpoint": "disputes",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/disputes/<ident>/review",
+            "endpoint": "decide_dispute",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/export",
+            "endpoint": "export_csv",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/health",
+            "endpoint": "operator_health",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/jobs",
+            "endpoint": "jobs",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/jobs/<ident>/cancel",
+            "endpoint": "cancel",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/jobs/<ident>/source",
+            "endpoint": "original_source",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/jobs/<ident>/submit",
+            "endpoint": "submit_job",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/manual",
+            "endpoint": "manual",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/memos",
+            "endpoint": "memos",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/notifications",
+            "endpoint": "notifications",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/ownership",
+            "endpoint": "ownership",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/ownership/<ident>/review",
+            "endpoint": "review_ownership",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/sessions",
+            "endpoint": "start",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/sessions/<ident>",
+            "endpoint": "session_status",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/sessions/<ident>/frames",
+            "endpoint": "frame",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/sessions/<ident>/preview",
+            "endpoint": "preview",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/operator/sessions/<ident>/stop",
+            "endpoint": "stop",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/operator/uploads",
+            "endpoint": "upload_ticket",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/overview",
+            "endpoint": "overview",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/registry",
+            "endpoint": "registry",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/registry",
+            "endpoint": "save_vehicle",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/samples/rush-hour/run",
+            "endpoint": "run_sample",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/uploads/<ident>",
+            "endpoint": "local_upload",
+            "methods": ["OPTIONS", "PUT"]
+        },
+        {
+            "route": "/api/user/disputes",
+            "endpoint": "dispute",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/user/memos",
+            "endpoint": "user_memos",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/user/pay",
+            "endpoint": "pay",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/api/user/profile",
+            "endpoint": "profile",
+            "methods": ["OPTIONS", "PUT"]
+        },
+        {
+            "route": "/api/user/vehicles",
+            "endpoint": "vehicles",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/api/user/vehicles/link",
+            "endpoint": "link_vehicle",
+            "methods": ["OPTIONS", "POST"]
+        },
+        {
+            "route": "/fines",
+            "endpoint": "memos",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/health",
+            "endpoint": "health",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        },
+        {
+            "route": "/ready",
+            "endpoint": "ready",
+            "methods": ["GET", "HEAD", "OPTIONS"]
+        }
+    ]
 }

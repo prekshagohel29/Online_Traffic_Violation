@@ -1,28 +1,28 @@
 {
-  "backend_tests": 36,
-  "react_unit_tests": 1,
-  "production_build": "passed",
-  "browser_workflows": 11,
-  "route_contracts": 65,
-  "route_parity": true,
-  "unchanged_application_files": {
-    "frontend/src": 43,
-    "frontend/public": 6,
-    "samples": 24,
-    "models": 10,
-    "backend": 14
-  },
-  "member3_package_unchanged": true,
-  "original_working_packages_unchanged": true,
-  "model_provisioning": "Actual pinned downloader branch checked with exact cached model as response; live network availability not tested",
-  "browser_test_ports": {
-    "web": 3003,
-    "api": 5003
-  },
-  "delivered_default_ports": {
-    "web": 3001,
-    "api": 5000
-  },
-  "private_data_included": false,
-  "installed_dependencies_included": false
+    "backend_tests": 36,
+    "react_unit_tests": 1,
+    "production_build": "passed",
+    "browser_workflows": 11,
+    "route_contracts": 65,
+    "route_parity": true,
+    "unchanged_application_files": {
+        "frontend/src": 43,
+        "frontend/public": 6,
+        "samples": 24,
+        "models": 10,
+        "backend": 14
+    },
+    "member3_package_unchanged": true,
+    "original_working_packages_unchanged": true,
+    "model_provisioning": "Actual pinned downloader branch checked with exact cached model as response; live network availability not tested",
+    "browser_test_ports": {
+        "web": 3003,
+        "api": 5003
+    },
+    "delivered_default_ports": {
+        "web": 3001,
+        "api": 5000
+    },
+    "private_data_included": false,
+    "installed_dependencies_included": false
 }

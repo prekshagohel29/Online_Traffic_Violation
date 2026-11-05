@@ -1,10 +1,148 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useResource,Status,Pager } from '../components/WorkspaceUI';
-import { PageHeader,HelpNote,money } from '../components/ExperienceUI';
-import { http,errorMessage } from '../utils/api';
-export default function Registry(){const [q,setQ]=useState('');const [page,setPage]=useState(1);const [editing,setEditing]=useState(false);const [form,setForm]=useState({plate:'',model:'',vehicle_class:'car',color:'',owner_display_name:'',contact_phone:'',address:'',registration_reference:''});const [message,setMessage]=useState('');const resource=useResource('/api/registry?page='+page+'&q='+encodeURIComponent(q));
- return <div className="workspace"><PageHeader eyebrow="RTO VEHICLE DIRECTORY" title="Vehicles and verified owners" description="Find the vehicle behind a case and see its linked records. Ownership approval remains a separate documented check."><button onClick={()=>setEditing(!editing)}>{editing?'Close form':'Add vehicle details'}</button></PageHeader>
- {editing&&<form className="panel form-grid" onSubmit={async e=>{e.preventDefault();try{await http.post('/api/registry',form);setMessage('Vehicle details saved. Use ownership verification to approve citizen access.');setEditing(false);resource.reload();}catch(err){setMessage(errorMessage(err));}}}>{[['plate','Vehicle plate'],['model','Make / model'],['vehicle_class','Vehicle class'],['color','Color'],['owner_display_name','Registered owner name'],['contact_phone','Contact phone'],['address','Address'],['registration_reference','Registration document reference']].map(([key,label])=><label key={key}>{label}<input required={key==='plate'} value={form[key]} onChange={e=>setForm({...form,[key]:e.target.value})}/></label>)}<button>Save vehicle details</button></form>}
- {message&&<p className="notice" role="status">{message}</p>}<section className="panel"><div className="section-heading"><label>Search directory<input value={q} onChange={e=>{setQ(e.target.value);setPage(1);}} placeholder="Plate, owner name or vehicle model"/></label><Link to="/operations?tab=Ownership">Review ownership requests →</Link></div><Status {...resource}><div className="vehicle-directory">{resource.data?.items.map(v=><article key={v.plate}><div className="vehicle-avatar" aria-hidden="true">{v.vehicle_class==='motorcycle'?'◉':'▰'}</div><div className="vehicle-main"><span className="plate-number">{v.plate}</span><h2>{v.model||'Vehicle model not recorded'}</h2><p>{v.color} · {v.vehicle_class}</p><strong>{v.owner_name||'Ownership not verified'}</strong><small>{v.ownership_verified?'Verified owner link':'Pending ownership check'}{v.is_demo?' · Fictional demonstration identity':''}</small>{v.owner_email&&<small>{v.owner_email}</small>}</div><div className="vehicle-numbers"><strong>{v.cases}</strong><small>linked cases</small><b>{money(v.outstanding)}</b><small>outstanding</small><Link to={'/cases?q='+encodeURIComponent(v.plate)}>View cases →</Link></div></article>)}</div><Pager page={page} setPage={setPage} total={resource.data?.total}/></Status></section><HelpNote>The directory describes registered records; it is not a government lookup service. Dataset examples are linked only to clearly labeled fictional owner profiles.</HelpNote></div>;
+import { useResource, Status, Pager } from '../components/WorkspaceUI';
+import { PageHeader, HelpNote, money } from '../components/ExperienceUI';
+import { http, errorMessage } from '../utils/api';
+export default function Registry() {
+    const [q, setQ] = useState('');
+    const [page, setPage] = useState(1);
+    const [editing, setEditing] = useState(false);
+    const [form, setForm] = useState({
+        plate: '',
+        model: '',
+        vehicle_class: 'car',
+        color: '',
+        owner_display_name: '',
+        contact_phone: '',
+        address: '',
+        registration_reference: '',
+    });
+    const [message, setMessage] = useState('');
+    const resource = useResource(
+        '/api/registry?page=' + page + '&q=' + encodeURIComponent(q),
+    );
+    return (
+        <div className="workspace">
+            <PageHeader
+                eyebrow="RTO VEHICLE DIRECTORY"
+                title="Vehicles and verified owners"
+                description="Find the vehicle behind a case and see its linked records. Ownership approval remains a separate documented check."
+            >
+                <button onClick={() => setEditing(!editing)}>
+                    {editing ? 'Close form' : 'Add vehicle details'}
+                </button>
+            </PageHeader>
+            {editing && (
+                <form
+                    className="panel form-grid"
+                    onSubmit={async (e) => {
+                        e.preventDefault();
+                        try {
+                            await http.post('/api/registry', form);
+                            setMessage(
+                                'Vehicle details saved. Use ownership verification to approve citizen access.',
+                            );
+                            setEditing(false);
+                            resource.reload();
+                        } catch (err) {
+                            setMessage(errorMessage(err));
+                        }
+                    }}
+                >
+                    {[
+                        ['plate', 'Vehicle plate'],
+                        ['model', 'Make / model'],
+                        ['vehicle_class', 'Vehicle class'],
+                        ['color', 'Color'],
+                        ['owner_display_name', 'Registered owner name'],
+                        ['contact_phone', 'Contact phone'],
+                        ['address', 'Address'],
+                        ['registration_reference', 'Registration document reference'],
+                    ].map(([key, label]) => (
+                        <label key={key}>
+                            {label}
+                            <input
+                                required={key === 'plate'}
+                                value={form[key]}
+                                onChange={(e) =>
+                                    setForm({ ...form, [key]: e.target.value })
+                                }
+                            />
+                        </label>
+                    ))}
+                    <button>Save vehicle details</button>
+                </form>
+            )}
+            {message && (
+                <p className="notice" role="status">
+                    {message}
+                </p>
+            )}
+            <section className="panel">
+                <div className="section-heading">
+                    <label>
+                        Search directory
+                        <input
+                            value={q}
+                            onChange={(e) => {
+                                setQ(e.target.value);
+                                setPage(1);
+                            }}
+                            placeholder="Plate, owner name or vehicle model"
+                        />
+                    </label>
+                    <Link to="/operations?tab=Ownership">
+                        Review ownership requests →
+                    </Link>
+                </div>
+                <Status {...resource}>
+                    <div className="vehicle-directory">
+                        {resource.data?.items.map((v) => (
+                            <article key={v.plate}>
+                                <div className="vehicle-avatar" aria-hidden="true">
+                                    {v.vehicle_class === 'motorcycle' ? '◉' : '▰'}
+                                </div>
+                                <div className="vehicle-main">
+                                    <span className="plate-number">{v.plate}</span>
+                                    <h2>{v.model || 'Vehicle model not recorded'}</h2>
+                                    <p>
+                                        {v.color} · {v.vehicle_class}
+                                    </p>
+                                    <strong>
+                                        {v.owner_name || 'Ownership not verified'}
+                                    </strong>
+                                    <small>
+                                        {v.ownership_verified
+                                            ? 'Verified owner link'
+                                            : 'Pending ownership check'}
+                                        {v.is_demo
+                                            ? ' · Fictional demonstration identity'
+                                            : ''}
+                                    </small>
+                                    {v.owner_email && <small>{v.owner_email}</small>}
+                                </div>
+                                <div className="vehicle-numbers">
+                                    <strong>{v.cases}</strong>
+                                    <small>linked cases</small>
+                                    <b>{money(v.outstanding)}</b>
+                                    <small>outstanding</small>
+                                    <Link
+                                        to={'/cases?q=' + encodeURIComponent(v.plate)}
+                                    >
+                                        View cases →
+                                    </Link>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                    <Pager page={page} setPage={setPage} total={resource.data?.total} />
+                </Status>
+            </section>
+            <HelpNote>
+                The directory describes registered records; it is not a government
+                lookup service. Dataset examples are linked only to clearly labeled
+                fictional owner profiles.
+            </HelpNote>
+        </div>
+    );
 }

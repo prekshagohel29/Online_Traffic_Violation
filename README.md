@@ -1,7 +1,7 @@
 # Online Traffic Violation — e-Memo
 
-A three-member college project for reviewing traffic evidence and managing
-project memos. **React is the only frontend framework**. A Flask API, SQLAlchemy
+A college project developed by **Preksha Gohel (Member 3)** for reviewing traffic
+evidence and managing project memos. **React is the only frontend framework**. A Flask API, SQLAlchemy
 database and CPU video worker support the four role portals.
 
 ## What the completed team project does
@@ -20,9 +20,19 @@ An RTO reviews evidence before confirming a case. Public dataset examples have
 explicitly fictional owner associations. Payments transfer no money; notices are
 local previews. This is a college demonstration, not an official enforcement service.
 
-## Team responsibilities and files
+## Project authorship
 
-| Member | Area | Guide |
+**Preksha Gohel — primary developer and project lead.** The project owner
+identifies Preksha as the original developer of the application. See
+[AUTHORS.md](AUTHORS.md) for the authorship and third-party credit statement.
+
+The repository was delivered using three member upload packages. Those package
+boundaries describe how files were submitted; they do not establish who
+originally wrote every file.
+
+## Upload packages and files
+
+| Upload member | Packaged area | Guide |
 |---|---|---|
 | 1 | Citizen/authentication and delivery of shared app shell/core | [Member 1](MEMBER_1_README.md) |
 | 2 | RTO, evidence, camera/video, worker/models and dataset assets | [Member 2](MEMBER_2_README.md) |

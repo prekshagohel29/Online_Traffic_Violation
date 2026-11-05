@@ -1,259 +1,259 @@
 {
-  "kind": "Unlabeled single-scene inference smoke benchmark; not event accuracy",
-  "platform": "Windows-11-10.0.26200-SP0",
-  "python": "3.14.7",
-  "opencv": "5.0.0",
-  "cpu": "13th Gen Intel(R) Core(TM) i5-1340P",
-  "logical_cpus": 16,
-  "configured_cv_threads": 2,
-  "model": "opencv-zoo-yolox-2022nov:c5c2d13e59ae",
-  "sample": "samples/rush-hour.webm",
-  "sampled_frames": 39,
-  "total_detections": 396,
-  "unique_track_ids": 75,
-  "mean_inference_ms": 559.49,
-  "median_inference_ms": 552.75,
-  "p95_inference_ms": 615.98,
-  "measured_inference_fps": 1.79,
-  "whole_run_seconds": 26.68,
-  "precision": null,
-  "recall": null,
-  "ocr_exact_match": null,
-  "limitations": "No held-out labeled event/OCR corpus; sample is Munich traffic, not Indian registration evaluation",
-  "frames": [
-    {
-      "source_seconds": 0.0,
-      "detections": 11,
-      "tracks": 11,
-      "inference_ms": 615.98
-    },
-    {
-      "source_seconds": 0.52,
-      "detections": 7,
-      "tracks": 7,
-      "inference_ms": 569.43
-    },
-    {
-      "source_seconds": 1.04,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 590.94
-    },
-    {
-      "source_seconds": 1.56,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 543.23
-    },
-    {
-      "source_seconds": 2.08,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 546.94
-    },
-    {
-      "source_seconds": 2.6,
-      "detections": 9,
-      "tracks": 9,
-      "inference_ms": 541.51
-    },
-    {
-      "source_seconds": 3.12,
-      "detections": 9,
-      "tracks": 9,
-      "inference_ms": 555.58
-    },
-    {
-      "source_seconds": 3.64,
-      "detections": 12,
-      "tracks": 12,
-      "inference_ms": 552.75
-    },
-    {
-      "source_seconds": 4.16,
-      "detections": 12,
-      "tracks": 12,
-      "inference_ms": 585.36
-    },
-    {
-      "source_seconds": 4.68,
-      "detections": 12,
-      "tracks": 12,
-      "inference_ms": 555.66
-    },
-    {
-      "source_seconds": 5.2,
-      "detections": 8,
-      "tracks": 8,
-      "inference_ms": 558.0
-    },
-    {
-      "source_seconds": 5.72,
-      "detections": 9,
-      "tracks": 9,
-      "inference_ms": 559.13
-    },
-    {
-      "source_seconds": 6.24,
-      "detections": 9,
-      "tracks": 9,
-      "inference_ms": 548.33
-    },
-    {
-      "source_seconds": 6.76,
-      "detections": 11,
-      "tracks": 11,
-      "inference_ms": 540.22
-    },
-    {
-      "source_seconds": 7.28,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 547.18
-    },
-    {
-      "source_seconds": 7.8,
-      "detections": 8,
-      "tracks": 8,
-      "inference_ms": 539.08
-    },
-    {
-      "source_seconds": 8.32,
-      "detections": 15,
-      "tracks": 15,
-      "inference_ms": 565.7
-    },
-    {
-      "source_seconds": 8.84,
-      "detections": 13,
-      "tracks": 13,
-      "inference_ms": 564.93
-    },
-    {
-      "source_seconds": 9.36,
-      "detections": 14,
-      "tracks": 14,
-      "inference_ms": 544.36
-    },
-    {
-      "source_seconds": 9.88,
-      "detections": 12,
-      "tracks": 12,
-      "inference_ms": 553.44
-    },
-    {
-      "source_seconds": 10.4,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 543.32
-    },
-    {
-      "source_seconds": 10.92,
-      "detections": 13,
-      "tracks": 13,
-      "inference_ms": 545.16
-    },
-    {
-      "source_seconds": 11.44,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 547.26
-    },
-    {
-      "source_seconds": 11.96,
-      "detections": 7,
-      "tracks": 7,
-      "inference_ms": 546.31
-    },
-    {
-      "source_seconds": 12.48,
-      "detections": 6,
-      "tracks": 6,
-      "inference_ms": 561.02
-    },
-    {
-      "source_seconds": 13.0,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 617.59
-    },
-    {
-      "source_seconds": 13.52,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 642.0
-    },
-    {
-      "source_seconds": 14.040000000000003,
-      "detections": 12,
-      "tracks": 12,
-      "inference_ms": 541.51
-    },
-    {
-      "source_seconds": 14.56,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 553.7
-    },
-    {
-      "source_seconds": 15.08,
-      "detections": 11,
-      "tracks": 11,
-      "inference_ms": 544.49
-    },
-    {
-      "source_seconds": 15.6,
-      "detections": 14,
-      "tracks": 14,
-      "inference_ms": 540.83
-    },
-    {
-      "source_seconds": 16.12,
-      "detections": 12,
-      "tracks": 12,
-      "inference_ms": 544.52
-    },
-    {
-      "source_seconds": 16.64,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 556.79
-    },
-    {
-      "source_seconds": 17.16,
-      "detections": 11,
-      "tracks": 11,
-      "inference_ms": 574.09
-    },
-    {
-      "source_seconds": 17.68,
-      "detections": 8,
-      "tracks": 8,
-      "inference_ms": 540.59
-    },
-    {
-      "source_seconds": 18.2,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 548.61
-    },
-    {
-      "source_seconds": 18.72,
-      "detections": 5,
-      "tracks": 5,
-      "inference_ms": 572.2
-    },
-    {
-      "source_seconds": 19.240000000000002,
-      "detections": 6,
-      "tracks": 6,
-      "inference_ms": 548.45
-    },
-    {
-      "source_seconds": 19.76,
-      "detections": 10,
-      "tracks": 10,
-      "inference_ms": 573.97
-    }
-  ]
+    "kind": "Unlabeled single-scene inference smoke benchmark; not event accuracy",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "opencv": "5.0.0",
+    "cpu": "13th Gen Intel(R) Core(TM) i5-1340P",
+    "logical_cpus": 16,
+    "configured_cv_threads": 2,
+    "model": "opencv-zoo-yolox-2022nov:c5c2d13e59ae",
+    "sample": "samples/rush-hour.webm",
+    "sampled_frames": 39,
+    "total_detections": 396,
+    "unique_track_ids": 75,
+    "mean_inference_ms": 559.49,
+    "median_inference_ms": 552.75,
+    "p95_inference_ms": 615.98,
+    "measured_inference_fps": 1.79,
+    "whole_run_seconds": 26.68,
+    "precision": null,
+    "recall": null,
+    "ocr_exact_match": null,
+    "limitations": "No held-out labeled event/OCR corpus; sample is Munich traffic, not Indian registration evaluation",
+    "frames": [
+        {
+            "source_seconds": 0.0,
+            "detections": 11,
+            "tracks": 11,
+            "inference_ms": 615.98
+        },
+        {
+            "source_seconds": 0.52,
+            "detections": 7,
+            "tracks": 7,
+            "inference_ms": 569.43
+        },
+        {
+            "source_seconds": 1.04,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 590.94
+        },
+        {
+            "source_seconds": 1.56,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 543.23
+        },
+        {
+            "source_seconds": 2.08,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 546.94
+        },
+        {
+            "source_seconds": 2.6,
+            "detections": 9,
+            "tracks": 9,
+            "inference_ms": 541.51
+        },
+        {
+            "source_seconds": 3.12,
+            "detections": 9,
+            "tracks": 9,
+            "inference_ms": 555.58
+        },
+        {
+            "source_seconds": 3.64,
+            "detections": 12,
+            "tracks": 12,
+            "inference_ms": 552.75
+        },
+        {
+            "source_seconds": 4.16,
+            "detections": 12,
+            "tracks": 12,
+            "inference_ms": 585.36
+        },
+        {
+            "source_seconds": 4.68,
+            "detections": 12,
+            "tracks": 12,
+            "inference_ms": 555.66
+        },
+        {
+            "source_seconds": 5.2,
+            "detections": 8,
+            "tracks": 8,
+            "inference_ms": 558.0
+        },
+        {
+            "source_seconds": 5.72,
+            "detections": 9,
+            "tracks": 9,
+            "inference_ms": 559.13
+        },
+        {
+            "source_seconds": 6.24,
+            "detections": 9,
+            "tracks": 9,
+            "inference_ms": 548.33
+        },
+        {
+            "source_seconds": 6.76,
+            "detections": 11,
+            "tracks": 11,
+            "inference_ms": 540.22
+        },
+        {
+            "source_seconds": 7.28,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 547.18
+        },
+        {
+            "source_seconds": 7.8,
+            "detections": 8,
+            "tracks": 8,
+            "inference_ms": 539.08
+        },
+        {
+            "source_seconds": 8.32,
+            "detections": 15,
+            "tracks": 15,
+            "inference_ms": 565.7
+        },
+        {
+            "source_seconds": 8.84,
+            "detections": 13,
+            "tracks": 13,
+            "inference_ms": 564.93
+        },
+        {
+            "source_seconds": 9.36,
+            "detections": 14,
+            "tracks": 14,
+            "inference_ms": 544.36
+        },
+        {
+            "source_seconds": 9.88,
+            "detections": 12,
+            "tracks": 12,
+            "inference_ms": 553.44
+        },
+        {
+            "source_seconds": 10.4,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 543.32
+        },
+        {
+            "source_seconds": 10.92,
+            "detections": 13,
+            "tracks": 13,
+            "inference_ms": 545.16
+        },
+        {
+            "source_seconds": 11.44,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 547.26
+        },
+        {
+            "source_seconds": 11.96,
+            "detections": 7,
+            "tracks": 7,
+            "inference_ms": 546.31
+        },
+        {
+            "source_seconds": 12.48,
+            "detections": 6,
+            "tracks": 6,
+            "inference_ms": 561.02
+        },
+        {
+            "source_seconds": 13.0,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 617.59
+        },
+        {
+            "source_seconds": 13.52,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 642.0
+        },
+        {
+            "source_seconds": 14.040000000000003,
+            "detections": 12,
+            "tracks": 12,
+            "inference_ms": 541.51
+        },
+        {
+            "source_seconds": 14.56,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 553.7
+        },
+        {
+            "source_seconds": 15.08,
+            "detections": 11,
+            "tracks": 11,
+            "inference_ms": 544.49
+        },
+        {
+            "source_seconds": 15.6,
+            "detections": 14,
+            "tracks": 14,
+            "inference_ms": 540.83
+        },
+        {
+            "source_seconds": 16.12,
+            "detections": 12,
+            "tracks": 12,
+            "inference_ms": 544.52
+        },
+        {
+            "source_seconds": 16.64,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 556.79
+        },
+        {
+            "source_seconds": 17.16,
+            "detections": 11,
+            "tracks": 11,
+            "inference_ms": 574.09
+        },
+        {
+            "source_seconds": 17.68,
+            "detections": 8,
+            "tracks": 8,
+            "inference_ms": 540.59
+        },
+        {
+            "source_seconds": 18.2,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 548.61
+        },
+        {
+            "source_seconds": 18.72,
+            "detections": 5,
+            "tracks": 5,
+            "inference_ms": 572.2
+        },
+        {
+            "source_seconds": 19.240000000000002,
+            "detections": 6,
+            "tracks": 6,
+            "inference_ms": 548.45
+        },
+        {
+            "source_seconds": 19.76,
+            "detections": 10,
+            "tracks": 10,
+            "inference_ms": 573.97
+        }
+    ]
 }
