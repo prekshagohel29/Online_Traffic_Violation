@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.ico -text
+*.webm -text
+*.onnx -text
+*.bin -text
+*.npz -text

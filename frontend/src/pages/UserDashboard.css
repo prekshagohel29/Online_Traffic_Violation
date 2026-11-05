@@ -1,0 +1,152 @@
+.dashboard-container {
+  max-width: 1500px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+.dashboard-header {
+  margin-bottom: 40px;
+}
+.dashboard-header h1 { color: #2c3e50; margin-bottom: 8px; }
+.dashboard-header p { color: #7f8c8d; }
+
+.vehicles-section {
+  margin-bottom: 30px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  border: 1px solid #edf2f7;
+}
+
+.vehicles-header h2 {
+  font-size: 1.1rem;
+  color: #34495e;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.vehicle-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.vehicle-pill {
+  padding: 10px 20px;
+  background: #f8f9fa;
+  border: 2px solid #ecf0f1;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #7f8c8d;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vehicle-pill:hover {
+  background: #eef2f5;
+  border-color: #bdc3c7;
+}
+
+.vehicle-pill.active {
+  background: #3498db;
+  color: white;
+  border-color: #3498db;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.pill-sub {
+  font-weight: normal;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Memos Area */
+.memos-list h2 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.memo-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+  border-left: 5px solid transparent;
+  transition: transform 0.2s;
+}
+.memo-card:hover { transform: translateY(-3px); }
+.status-paid { border-left-color: #2ecc71; }
+.status-unpaid { border-left-color: #e74c3c; }
+
+.memo-info h3 { margin: 0 0 10px 0; color: #2c3e50; font-size: 1.2rem; }
+.memo-info p { margin: 5px 0; color: #7f8c8d; font-size: 0.95rem; }
+.plate-tag { background: #f1f2f6; padding: 3px 8px; border-radius: 4px; font-family: monospace; font-weight: bold; color: #2c3e50; }
+
+.memo-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.fine-amount {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.status-badge.paid { background: #e8f8f5; color: #2ecc71; }
+.status-badge.unpaid { background: #fdedec; color: #e74c3c; }
+
+.pay-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pay-btn:hover { background: #2980b9; }
+
+/* Link Card */
+.link-vehicle-card {
+  margin-top: 50px;
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px dashed #bdc3c7;
+}
+
+.link-vehicle-card h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.link-form { display: flex; gap: 15px; }
+.link-form input { flex: 1; padding: 12px; border: 1px solid #dcdde1; border-radius: 6px; outline: none; }
+.link-form input:focus { border-color: #3498db; }
+.action-btn { padding: 12px 25px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+.empty-memos { padding: 40px; text-align: center; background: white; border-radius: 12px; color: #2ecc71; font-weight: bold; border: 2px dashed #2ecc71; }
+.empty-state-text { color: #95a5a6; }
+.loading-state { color: #3498db; font-weight: bold; }

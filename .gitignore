@@ -1,13 +1,24 @@
-__pycache__/
-*.pyc
-.venv/
-node_modules/
-frontend/build/
-data/
+# Local settings, accounts and runtime evidence
 .env
 .env.*
 !.env.example
+!backend/.env.example
+data/
 LOCAL_TEST_ACCOUNTS.md
 LOGIN_DETAILS.txt
-artifacts/
+*.db
+*.sqlite*
+# Dependencies, generated build and verification artifacts
+.venv/
+node_modules/
+frontend/build/
+frontend/test-results/
+frontend/playwright-report/
+__pycache__/
+*.pyc
 .pytest_cache/
+artifacts/*
+!artifacts/inference-report.json
+!artifacts/helmet-classifier-report.json
+# Pinned model provisioned by setup; exceeds the browser upload limit
+models/yolox.onnx
