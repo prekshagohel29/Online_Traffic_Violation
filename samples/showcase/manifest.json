@@ -1,0 +1,637 @@
+[
+  {
+    "id": "helmet-0",
+    "title": "Helmet safety dataset \u00b7 image 0",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-0.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets296_png_jpg.rf.1021ac848086daa50bcd899b608beb3c.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "f33cb37546c3f1af663f97dbc2487ffd70432804ac6682a32db6d79278f85aa2",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            269,
+            21,
+            44,
+            54
+          ]
+        },
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            318,
+            21,
+            39,
+            63
+          ]
+        },
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            208,
+            22,
+            45,
+            67
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-1",
+    "title": "Helmet safety dataset \u00b7 image 1",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-1.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets692_png_jpg.rf.0b63dfdac7dd077ee01a1b5e1871b038.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "c1360a9cf3cad510ba05afb91da36190bd187cd895165264116e1bdad5aba393",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            334,
+            83,
+            29,
+            42
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            110,
+            84,
+            32,
+            55
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            194,
+            96,
+            28,
+            44
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            21,
+            126,
+            21,
+            37
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-2",
+    "title": "Helmet safety dataset \u00b7 image 2",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-2.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/download-3-_jpeg.rf.58e78bcf8afe1902a632cb9d572ba433.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "1c56d5ab773bf04fbcd8e9e13241a12b16e403657faab1624897ad38424477d4",
+    "annotations": {
+      "image_width": 474,
+      "image_height": 315,
+      "labels": [
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            214,
+            3,
+            94,
+            100
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-3",
+    "title": "Helmet safety dataset \u00b7 image 3",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-3.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets163_png_jpg.rf.51be2cc52c76d787cc22316828b0a6c2.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "8ce221795d78afcca5896c79da8c7cb48c9d1ff0f3479d3c57ace950fc58d0d8",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            262,
+            95,
+            28,
+            47
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            56,
+            32,
+            28,
+            53
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            131,
+            48,
+            29,
+            46
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            323,
+            45,
+            31,
+            53
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            197,
+            67,
+            26,
+            47
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-4",
+    "title": "Helmet safety dataset \u00b7 image 4",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-4.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets33_png_jpg.rf.4efdaf796aa6abc70d271b66474bfff9.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "bae8a90d170fa22c15b02a7f21e4cdfc3ed233fa0256cd2efaa4202805a9b6e7",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            19,
+            41,
+            82,
+            77
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            179,
+            90,
+            46,
+            63
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-5",
+    "title": "Helmet safety dataset \u00b7 image 5",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-5.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets668_png_jpg.rf.bd2fcd1d1cb61ec46845943f147e44b4.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "613605b5c0c28dd6f3fafcfa1c62fc3bfe97c9e0f4c6df6dae221ebdc40e9972",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            161,
+            4,
+            40,
+            61
+          ]
+        },
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            99,
+            31,
+            30,
+            63
+          ]
+        },
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            239,
+            37,
+            26,
+            52
+          ]
+        },
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            98,
+            35,
+            31,
+            57
+          ]
+        },
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            349,
+            81,
+            35,
+            81
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-6",
+    "title": "Helmet safety dataset \u00b7 image 6",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-6.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets620_png_jpg.rf.b0eefe214b9abef983c526dc152732d7.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "812da850cfb05c9571af49d0e4d372287cd4d03df3f4496b4a0999fe41bb3708",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            16,
+            65,
+            19,
+            38
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            202,
+            67,
+            21,
+            46
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            154,
+            75,
+            16,
+            35
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            116,
+            72,
+            24,
+            54
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            320,
+            87,
+            30,
+            52
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-7",
+    "title": "Helmet safety dataset \u00b7 image 7",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-7.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets335_png_jpg.rf.fc1a137d16fdb9272314d03030dc3923.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "deec7e6fb3157ad66ed5a411b31ee08895b5757fb7018a9365281c1a39f3b305",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            215,
+            52,
+            65,
+            65
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-8",
+    "title": "Helmet safety dataset \u00b7 image 8",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-8.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets739_png_jpg.rf.3102f2c1644703e2ce5573b5ced3d8bf.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "5f13b725448d40b95563edc12b11df8c17590d28ec6b68ec0ffcc84fded87b81",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            135,
+            39,
+            46,
+            82
+          ]
+        },
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            189,
+            37,
+            46,
+            85
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-9",
+    "title": "Helmet safety dataset \u00b7 image 9",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-9.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets602_png_jpg.rf.77265bead712f79e4373d599da60f38f.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "92810ba2142e7f3e7ad241093f06d9125aa8640264f98a15d7cd75e56dea2c58",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            220,
+            24,
+            71,
+            127
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-10",
+    "title": "Helmet safety dataset \u00b7 image 10",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-10.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets476_png_jpg.rf.8e8a6b902f3a1faac87f60af24913811.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "6ac09745ea7afb4f4800df385c67641a7db71173770415fb5f20dfe5e47be548",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            123,
+            2,
+            83,
+            140
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            283,
+            133,
+            14,
+            35
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "helmet-11",
+    "title": "Helmet safety dataset \u00b7 image 11",
+    "category": "helmet_safety",
+    "file": "samples/showcase/helmet-11.jpg",
+    "source_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset",
+    "download_url": "https://huggingface.co/datasets/cute-face/bike-helmet-dataset/resolve/29338f31e9985da07bc6992dde0633676c7b6415/test/BikesHelmets618_png_jpg.rf.46d5d6fd5ec474846b2792dc248e5c21.jpg",
+    "revision": "29338f31e9985da07bc6992dde0633676c7b6415",
+    "license": "CC BY 4.0",
+    "attribution": "Syed Salman Reza, Bike Helmet Detection dataset (original declares Public Domain); cute-face/Hugging Face mirror declares CC BY 4.0. Source notices included.",
+    "sha256": "55807c37fad4cdbffa2bfcaec4535e559c363ee067aa4752b7992f2bb129ef64",
+    "annotations": {
+      "image_width": 416,
+      "image_height": 416,
+      "labels": [
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            117,
+            116,
+            24,
+            37
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            199,
+            134,
+            18,
+            33
+          ]
+        },
+        {
+          "label": "Without Helmet",
+          "box_xywh": [
+            216,
+            142,
+            14,
+            28
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            229,
+            144,
+            13,
+            31
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            296,
+            157,
+            16,
+            31
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            378,
+            166,
+            13,
+            25
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            339,
+            165,
+            16,
+            29
+          ]
+        },
+        {
+          "label": "With Helmet",
+          "box_xywh": [
+            351,
+            169,
+            16,
+            26
+          ]
+        }
+      ],
+      "basis": "Published dataset annotations; not output of this application"
+    }
+  },
+  {
+    "id": "traffic-1",
+    "title": "CC0 city traffic \u00b7 1.5 seconds",
+    "category": "road_traffic",
+    "file": "samples/showcase/traffic-1.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Video_Codec_Test_rush_hour_1080p25.y4m.webm",
+    "license": "CC0",
+    "attribution": "Taurus Media Technik, Munich rush-hour test sequence, via Wikimedia Commons",
+    "sha256": "24acb74fcba33d5c28a7b77eb161d959873256241f9d59d074040c823fbca24c",
+    "annotations": {
+      "source_time_seconds": 1.5,
+      "basis": "Prerecorded traffic frame. Any violation scenario added to this frame is fictional."
+    }
+  },
+  {
+    "id": "traffic-2",
+    "title": "CC0 city traffic \u00b7 4 seconds",
+    "category": "road_traffic",
+    "file": "samples/showcase/traffic-2.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Video_Codec_Test_rush_hour_1080p25.y4m.webm",
+    "license": "CC0",
+    "attribution": "Taurus Media Technik, Munich rush-hour test sequence, via Wikimedia Commons",
+    "sha256": "bd3ef80e468ffc72fce96ab4b2a82e98f6c6c4b694f831d3290e3515d760dc47",
+    "annotations": {
+      "source_time_seconds": 4,
+      "basis": "Prerecorded traffic frame. Any violation scenario added to this frame is fictional."
+    }
+  },
+  {
+    "id": "traffic-3",
+    "title": "CC0 city traffic \u00b7 9 seconds",
+    "category": "road_traffic",
+    "file": "samples/showcase/traffic-3.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Video_Codec_Test_rush_hour_1080p25.y4m.webm",
+    "license": "CC0",
+    "attribution": "Taurus Media Technik, Munich rush-hour test sequence, via Wikimedia Commons",
+    "sha256": "786def752c8bf0f33010412f7467537bf057560c74f8586a0ac57d8806baee56",
+    "annotations": {
+      "source_time_seconds": 9,
+      "basis": "Prerecorded traffic frame. Any violation scenario added to this frame is fictional."
+    }
+  },
+  {
+    "id": "traffic-4",
+    "title": "CC0 city traffic \u00b7 14 seconds",
+    "category": "road_traffic",
+    "file": "samples/showcase/traffic-4.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Video_Codec_Test_rush_hour_1080p25.y4m.webm",
+    "license": "CC0",
+    "attribution": "Taurus Media Technik, Munich rush-hour test sequence, via Wikimedia Commons",
+    "sha256": "ccd74ddff53b331df5693bc6f6bfea703ac6aa7c821ca8d84c703f9fb9c0abba",
+    "annotations": {
+      "source_time_seconds": 14,
+      "basis": "Prerecorded traffic frame. Any violation scenario added to this frame is fictional."
+    }
+  }
+]

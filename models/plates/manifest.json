@@ -1,0 +1,44 @@
+[
+  {
+    "file": "models/plates/vehicle-license-plate-detection-barrier-0106.xml",
+    "url": "https://storage.openvinotoolkit.org/repositories/open_model_zoo/2023.0/models_bin/1/vehicle-license-plate-detection-barrier-0106/FP32/vehicle-license-plate-detection-barrier-0106.xml",
+    "sha256": "45d82b40f48ce43e61188ed16a140c8a77c4340cf367fc18c491b1f1a1218dd7",
+    "bytes": 238536
+  },
+  {
+    "file": "models/plates/vehicle-license-plate-detection-barrier-0106.bin",
+    "url": "https://storage.openvinotoolkit.org/repositories/open_model_zoo/2023.0/models_bin/1/vehicle-license-plate-detection-barrier-0106/FP32/vehicle-license-plate-detection-barrier-0106.bin",
+    "sha256": "f84139f97805d343273e840d47b81c89a7c96c6263226a5622670e66424fb2a1",
+    "bytes": 2573388
+  },
+  {
+    "file": "models/plates/cct_xs_v2_global.onnx",
+    "url": "https://github.com/ankandrew/cnn-ocr-lp/releases/download/arg-plates/cct_xs_v2_global.onnx",
+    "sha256": "8031afb5fdc6b4d80462c9d542f1284ebd2cfddf5dbacd62609848d7e2855f44",
+    "bytes": 3344292
+  },
+  {
+    "file": "models/plates/cct_xs_v2_global_plate_config.yaml",
+    "url": "https://github.com/ankandrew/cnn-ocr-lp/releases/download/arg-plates/cct_xs_v2_global_plate_config.yaml",
+    "sha256": "0335c74a305173bb6f393efed0fde03cadeaa0b649ed8e19f431016d8232d0a6",
+    "bytes": 1725
+  },
+  {
+    "file": "models/plates/LICENSE-INTEL.txt",
+    "url": "https://raw.githubusercontent.com/openvinotoolkit/open_model_zoo/master/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "bytes": 11357
+  },
+  {
+    "file": "models/plates/LICENSE-OCR.txt",
+    "url": "https://raw.githubusercontent.com/ankandrew/fast-plate-ocr/master/LICENSE",
+    "sha256": "a953e6268c89179c4a8f0cf5a49f57bc380a60e38078fe1f6361a0e45fd00363",
+    "bytes": 1066
+  },
+  {
+    "file": "samples/plate-example.png",
+    "url": "https://raw.githubusercontent.com/ankandrew/fast-alpr/master/assets/test_image.png",
+    "sha256": "c154c3e0873fa35076ecf4f611d345c092450217fe75737b2a77183018218255",
+    "bytes": 353058
+  }
+]
