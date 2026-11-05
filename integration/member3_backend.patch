@@ -1,0 +1,263 @@
+--- a/backend/app.py
++++ b/backend/app.py
+@@ -448,6 +448,8 @@
+         services=list(db.scalars(select(Service).where(Service.heartbeat>time.time()-30)))
+         return {'workers':len(services),'model_ready':any(x.details.get('model_ready') for x in services),
+                 'workers_detail':[record(x) for x in services]}
++    from .member3_admin import register_member3_health
++    register_member3_health(app,engine,model_health)
+     @app.get('/health')
+     def health(): return jsonify(status='ok',api='online')
+     @app.get('/ready')
+@@ -455,13 +457,6 @@
+         with transaction(engine) as db:
+             db.execute(select(1)); h=model_health(db)
+             return jsonify(api='online',database='online',queue='database',model='ready' if h['model_ready'] else 'unavailable',worker='online' if h['workers'] else 'offline')
+-    @app.get('/api/operator/health')
+-    @role('ADMIN','RTO')
+-    def operator_health():
+-        with transaction(engine) as db:
+-            return jsonify(**model_health(db),queued_jobs=db.scalar(select(func.count()).select_from(Job).where(Job.status=='QUEUED')),
+-                           active_sessions=db.scalar(select(func.count()).select_from(VideoSession).where(VideoSession.status=='RUNNING')),
+-                           storage=app.config['STORAGE_MODE'],notification_mode=app.config['NOTIFICATION_MODE'])
+     @app.get('/api/operator/cameras')
+     @role('ADMIN','RTO')
+     def cameras():
+@@ -666,45 +661,8 @@
+         return jsonify(id=c.id,status='PENDING'),201
+ 
+ def register_admin_routes(app,engine,throttle):
+-    @app.get('/api/gov/analytics')
+-    @role('GOVT','ADMIN','RTO')
+-    def analytics():
+-        # Bounds are UTC instants supplied by the UI after applying Asia/Kolkata dates.
+-        filters=[]
+-        for key,operator in (('from',True),('to',False)):
+-            if request.args.get(key):
+-                try:
+-                    dt=datetime.fromisoformat(request.args[key].replace('Z','+00:00'))
+-                    if not dt.tzinfo: raise ValueError()
+-                    stamp=dt.astimezone(timezone.utc).isoformat()
+-                except ValueError: abort(400,description='Use ISO dates with a timezone')
+-                filters.append(Violation.created_at>=stamp if operator else Violation.created_at<stamp)
+-        if request.args.get('location'): filters.append(Violation.location==request.args['location'][:150])
+-        if request.args.get('type'): filters.append(Violation.rule==request.args['type'][:80])
+-        with transaction(engine) as db:
+-            q=select(Violation).where(*filters)
+-            if request.args.get('camera_id'): q=q.join(Candidate).where(Candidate.camera_id==request.args['camera_id'])
+-            ids=q.with_only_columns(Violation.id)
+-            memos_q=select(Memo).where(Memo.violation_id.in_(ids))
+-            def count(status): return db.scalar(select(func.count()).select_from(memos_q.where(Memo.status==status).subquery()))
+-            revenue=db.scalar(select(func.coalesce(func.sum(Memo.fine_amount),0)).where(Memo.violation_id.in_(ids),Memo.status=='SANDBOX_PAID'))
+-            areas=[{'name':a,'value':n} for a,n in db.execute(select(Violation.location,func.count()).where(Violation.id.in_(ids)).group_by(Violation.location))]
+-            types=[{'name':a,'value':n} for a,n in db.execute(select(Violation.rule,func.count()).where(Violation.id.in_(ids)).group_by(Violation.rule))]
+-            # Portable grouping; DB does the aggregate and returns no citizen identities.
+-            month=func.substr(Violation.created_at,1,7)
+-            trends=[{'month':a,'violations':n} for a,n in db.execute(select(month,func.count()).where(Violation.id.in_(ids)).group_by(month).order_by(month))]
+-            pending=select(Candidate).where(Candidate.status.in_(['PENDING','NEEDS_EVIDENCE']))
+-            if request.args.get('location'): pending=pending.where(Candidate.location==request.args['location'])
+-            if request.args.get('type'): pending=pending.where(Candidate.rule==request.args['type'])
+-            if request.args.get('camera_id'): pending=pending.where(Candidate.camera_id==request.args['camera_id'])
+-            for key,op in (('from',True),('to',False)):
+-                if request.args.get(key):
+-                    val=datetime.fromisoformat(request.args[key].replace('Z','+00:00')).astimezone(timezone.utc).isoformat()
+-                    pending=pending.where(Candidate.created_at>=val if op else Candidate.created_at<val)
+-            return jsonify(kpi={'total_violations':db.scalar(select(func.count()).select_from(q.subquery())),
+-                'total_memos':db.scalar(select(func.count()).select_from(memos_q.subquery())),'total_revenue':revenue,'verified_real_revenue':0,
+-                'pending_count':count('UNPAID'),'paid_count':count('SANDBOX_PAID'),'pending_candidates':db.scalar(select(func.count()).select_from(pending.subquery()))},
+-                area_wise=areas,types=types,monthly_trends=trends,timezone='Asia/Kolkata',revenue_mode='SANDBOX ONLY')
++    from .member3_admin import register_member3_admin
++    register_member3_admin(app,engine)
+     @app.get('/api/operator/export')
+     @role('ADMIN','RTO')
+     def export_csv():
+@@ -716,58 +674,10 @@
+             for m,v in db.execute(select(Memo,Violation).join(Violation).order_by(Memo.created_at.desc()).limit(10000)):
+                 writer.writerow([safe(x) for x in (m.id,v.plate,v.rule,v.location,m.fine_amount,m.status)])
+         return Response(buf.getvalue(),mimetype='text/csv',headers={'Content-Disposition':'attachment; filename="project-memos.csv"'})
+-    @app.get('/api/admin/users')
+-    @role('ADMIN')
+-    def users():
+-        with transaction(engine) as db: return jsonify(page_result(db,select(User).order_by(User.email),lambda u:record(u,('password_hash','token_version'))))
+-    @app.patch('/api/admin/users/<ident>')
+-    @role('ADMIN')
+-    def provision(ident):
+-        d=json_body(); new_role=d.get('role')
+-        if new_role not in ('USER','RTO','GOVT','ADMIN'): abort(400,description='Invalid role')
+-        reason=string(d,'reason',1000)
+-        with transaction(engine) as db:
+-            u=fetch(db,User,ident,True)
+-            if u.id==g.user.id: abort(409,description='Use another administrator to change your own role')
+-            old=u.role; u.role=new_role; u.token_version+=1
+-            audit(db,'PROVISION_ROLE',u.id,{'from':old,'to':new_role,'reason':reason})
+-        return jsonify(msg='Role provisioned; existing sessions revoked')
+-    @app.get('/api/admin/audit')
+-    @role('ADMIN')
+-    def audit_log():
+-        with transaction(engine) as db: return jsonify(page_result(db,select(Audit).order_by(Audit.created_at.desc())))
+     @app.get('/api/operator/notifications')
+     @role('ADMIN','RTO')
+     def notifications():
+         with transaction(engine) as db: return jsonify(page_result(db,select(Outbox).order_by(Outbox.created_at.desc())))
+-    @app.get('/api/admin/policy')
+-    @role('ADMIN')
+-    def policy():
+-        with transaction(engine) as db:
+-            value=db.get(Setting,'fine_policy')
+-            return jsonify(value.value if value else {'version':'project-demo-1','bases':BASE_FINES})
+-    @app.put('/api/admin/policy')
+-    @role('ADMIN')
+-    def set_policy():
+-        d=json_body(); bases=d.get('bases')
+-        if not isinstance(bases,dict) or set(bases)!=set(BASE_FINES): abort(400,description='Supply each supported rule base')
+-        for key,val in bases.items(): number(val,0,100000,'Base fine')
+-        version='project-demo-'+uid()[:8]
+-        with transaction(engine) as db:
+-            db.merge(Setting(id='fine_policy',value={'version':version,'bases':bases})); audit(db,'UPDATE_DEMO_POLICY',version,{'bases':bases})
+-        return jsonify(msg='Demo fine policy version saved',version=version)
+-    @app.post('/api/admin/devices')
+-    @role('ADMIN')
+-    def create_device():
+-        d=json_body(); token=secrets.token_urlsafe(40)
+-        with transaction(engine) as db:
+-            c=fetch(db,Camera,d.get('camera_id')); dev=Device(camera_id=c.id,token_hash=digest(token)); db.add(dev); db.flush(); audit(db,'CREATE_DEVICE',dev.id)
+-        return jsonify(id=dev.id,token=token,msg='Store this credential securely; it is shown once'),201
+-    @app.delete('/api/admin/devices/<ident>')
+-    @role('ADMIN')
+-    def revoke_device(ident):
+-        with transaction(engine) as db: fetch(db,Device,ident,True).active=0; audit(db,'REVOKE_DEVICE',ident)
+-        return jsonify(msg='Device revoked')
+ 
+ def main():
+     from waitress import serve
+--- a/backend/experience.py
++++ b/backend/experience.py
+@@ -10,126 +10,8 @@
+ def register_experience(app, engine):
+     # Import after app helpers are defined; no second authorization system.
+     from .app import role, fetch, record, owner, audit, json_body, string, plate, page_query
+-    def demo_expr():
+-        return or_(Candidate.model_version.like('synthetic%'),Candidate.event_key.like('showcase-%'),
+-                   Candidate.id.in_(select(CaseMetadata.id).where(CaseMetadata.is_demo==1)))
+-    def scoped():
+-        q=select(Candidate)
+-        if g.user.role=='USER':
+-            q=q.join(Violation,Violation.candidate_id==Candidate.id).where(Violation.plate.in_(
+-                select(Link.plate).where(Link.user_id==g.user.id,Link.status=='APPROVED')))
+-        return q
+-    def filtered(q,db):
+-        args=request.args
+-        if args.get('scope')=='demo': q=q.where(demo_expr())
+-        elif args.get('scope')=='live': q=q.where(~demo_expr())
+-        if args.get('status') and args['status']!='ALL': q=q.where(Candidate.status==args['status'])
+-        if args.get('type'): q=q.where(Candidate.rule==args['type'])
+-        if args.get('location'): q=q.where(Candidate.location==args['location'])
+-        if args.get('camera'): q=q.where(Candidate.camera_id==args['camera'])
+-        if args.get('q'):
+-            term=args['q'][:100].strip()
+-            fields=[Candidate.id.contains(term),Candidate.rule.contains(term),Candidate.location.contains(term)]
+-            if re.fullmatch(r'EM-[0-9A-Fa-f]{1,7}',term,re.IGNORECASE):
+-                prefix=term[3:].lower()
+-                matches=[ident for ident in db.scalars(q.with_only_columns(Candidate.id)) if hashlib.sha256(ident.encode()).hexdigest().startswith(prefix)]
+-                fields.append(Candidate.id.in_(matches))
+-            if g.user.role!='GOVT': fields.append(Candidate.plate.contains(term.upper().replace(' ','')))
+-            q=q.where(or_(*fields))
+-        for key,lower in [('from',True),('to',False)]:
+-            if args.get(key):
+-                try:
+-                    dt=datetime.fromisoformat(args[key].replace('Z','+00:00'))
+-                    if not dt.tzinfo: raise ValueError()
+-                    stamp=dt.astimezone(timezone.utc).isoformat()
+-                except ValueError: abort(400,description='A date and timezone are required')
+-                q=q.where(Candidate.created_at>=stamp if lower else Candidate.created_at<stamp)
+-        return q
+-    def profile(db,number):
+-        v=db.get(VehicleProfile,number) if number else None
+-        link=db.scalar(select(Link).where(Link.plate==number,Link.status=='APPROVED')) if number else None
+-        user=db.get(User,link.user_id) if link else None
+-        return {'plate':number,'model':v.model if v else '', 'vehicle_class':v.vehicle_class if v else '',
+-                'color':v.color if v else '', 'owner_name':(v.owner_display_name if v and v.owner_display_name else user.full_name if user else None),
+-                'owner_email':user.email if user else None,'owner_phone':(v.contact_phone if v and v.contact_phone else user.phone_number if user else None),
+-                'address':v.address if v and user else None,'ownership_verified':bool(link),'is_demo':bool(v and v.is_demo)}
+-    def serialize(db,c,detail=False):
+-        meta=db.get(CaseMetadata,c.id); is_demo=bool((meta and meta.is_demo) or c.model_version.startswith('synthetic') or c.event_key.startswith('showcase-'))
+-        v=db.scalar(select(Violation).where(Violation.candidate_id==c.id))
+-        m=db.scalar(select(Memo).where(Memo.violation_id==v.id)) if v else None
+-        payment=db.scalar(select(Payment).where(Payment.memo_id==m.id)) if m else None
+-        dispute=db.scalar(select(Dispute).where(Dispute.memo_id==m.id)) if m else None
+-        asset=db.get(DatasetAsset,meta.asset_id) if meta and meta.asset_id else None
+-        government=g.user.role=='GOVT'
+-        p=profile(db,c.plate) if not government else None
+-        data={'id':c.id,'reference':'EM-'+hashlib.sha256(c.id.encode()).hexdigest()[:7].upper(),'type':c.rule,'location':c.location,'status':c.status,
+-              'created_at':c.created_at,'source_time':c.source_time,'captured_at':c.captured_at,'plate':None if government else c.plate,
+-              'vehicle':p,'is_demo':is_demo,'source_label':'Dataset example' if asset else 'Practice example' if is_demo else 'Video analysis' if c.session_id else 'Manual report',
+-              'explanation':('An RTO case for '+c.rule+'. Identifiable evidence remains restricted to authorized reviewers.') if government else c.explanation,'evidence_count':len(c.evidence),'memo_id':m.id if m else None,
+-              'fine_amount':m.fine_amount if m else None,'memo_status':m.status if m else None,
+-              'payment_mode':payment.mode if payment else None,'dispute_status':dispute.status if dispute else None,
+-              'next_action':'Review evidence' if c.status=='PENDING' else 'Add missing evidence' if c.status=='NEEDS_EVIDENCE' else
+-                  'Resolve dispute' if m and m.status=='DISPUTED' else 'Await sandbox payment' if m and m.status=='UNPAID' else 'Case complete',
+-              'dataset':{'title':asset.title,'license':asset.license,'source_url':asset.source_url,'attribution':asset.attribution,'annotations':asset.annotations} if asset else None}
+-        if detail:
+-            data.update(review_reason=None if government else c.review_reason,rule_version=c.rule_version,calibration_version=c.calibration_version,
+-                        model_version=c.model_version,observations={} if government else c.observations,
+-                        ocr=[] if government else c.raw_ocr,reviewer=None if government else c.reviewer,
+-                        payment=record(payment) if payment and not government else None,
+-                        dispute=record(dispute) if dispute and not government else None,
+-                        memo=record(m) if m else None,
+-                        evidence=[] if government else [{**e,'url':f'/api/candidates/{c.id}/evidence/{i}'} for i,e in enumerate(c.evidence)])
+-            targets=[c.id]+([m.id] if m else [])+([dispute.id] if dispute else [])
+-            events=list(db.scalars(select(Audit).where(Audit.target.in_(targets)).order_by(Audit.created_at)))
+-            data['timeline']=[{'action':e.action.replace('_',' ').title(),'time':e.created_at,
+-                'reason':'' if government else e.details.get('reason') or e.details.get('note') or '',
+-                'actor':None if government or g.user.role=='USER' else (db.get(User,e.actor).full_name if db.get(User,e.actor) else 'System')} for e in events]
+-            if not data['timeline']: data['timeline']=[{'action':'Case recorded','time':c.created_at,'reason':data['explanation'],'actor':'System'}]
+-        return data
+-    @app.get('/api/cases')
+-    @role('USER','RTO','ADMIN','GOVT')
+-    def cases():
+-        with transaction(engine) as db:
+-            q=filtered(scoped(),db); paged,page,size=page_query(q.order_by(Candidate.created_at.desc()))
+-            return jsonify(items=[serialize(db,c) for c in db.scalars(paged)],page=page,size=size,
+-                total=db.scalar(select(func.count()).select_from(q.subquery())))
+-    @app.get('/api/case-filters')
+-    @role('USER','RTO','ADMIN','GOVT')
+-    def case_filters():
+-        with transaction(engine) as db:
+-            ids=filtered(scoped(),db).with_only_columns(Candidate.id)
+-            return jsonify(locations=list(db.scalars(select(Candidate.location).where(Candidate.id.in_(ids)).distinct().order_by(Candidate.location))),
+-                types=list(db.scalars(select(Candidate.rule).where(Candidate.id.in_(ids)).distinct().order_by(Candidate.rule))))
+-    @app.get('/api/cases/<ident>')
+-    @role('USER','RTO','ADMIN','GOVT')
+-    def case(ident):
+-        with transaction(engine) as db:
+-            c=db.scalar(scoped().where(Candidate.id==ident))
+-            if not c: abort(404,description='Case not found')
+-            return jsonify(serialize(db,c,True))
+-    @app.get('/api/overview')
+-    @role('USER','RTO','ADMIN','GOVT')
+-    def overview():
+-        with transaction(engine) as db:
+-            q=filtered(scoped(),db); ids=q.with_only_columns(Candidate.id).order_by(None)
+-            total=db.scalar(select(func.count()).select_from(q.subquery()))
+-            statuses=dict(db.execute(select(Candidate.status,func.count()).where(Candidate.id.in_(ids)).group_by(Candidate.status)).all())
+-            types=[{'name':a,'value':n} for a,n in db.execute(select(Candidate.rule,func.count()).where(Candidate.id.in_(ids)).group_by(Candidate.rule))]
+-            locations=[{'name':a,'value':n} for a,n in db.execute(select(Candidate.location,func.count()).where(Candidate.id.in_(ids)).group_by(Candidate.location))]
+-            dates=Counter(datetime.fromisoformat(stamp.replace('Z','+00:00')).astimezone(timezone(timedelta(hours=5,minutes=30))).date().isoformat()
+-                for stamp in db.scalars(select(Candidate.created_at).where(Candidate.id.in_(ids))))
+-            trend=[{'date':a,'cases':n} for a,n in sorted(dates.items())]
+-            mids=select(Memo.id).join(Violation).where(Violation.candidate_id.in_(ids))
+-            money={s:0 for s in ('UNPAID','SANDBOX_PAID','DISPUTED','VOID')}
+-            for state,value in db.execute(select(Memo.status,func.sum(Memo.fine_amount)).where(Memo.id.in_(mids)).group_by(Memo.status)): money[state]=value
+-            recent=list(db.scalars(q.order_by(Candidate.created_at.desc()).limit(5)))
+-            return jsonify(total=total,pending=statuses.get('PENDING',0),needs_evidence=statuses.get('NEEDS_EVIDENCE',0),
+-                confirmed=statuses.get('CONFIRMED',0),rejected=statuses.get('REJECTED',0),statuses=statuses,
+-                money=money,types=types,locations=locations,trend=trend,
+-                demos=db.scalar(select(func.count()).select_from(q.where(demo_expr()).subquery())),
+-                disputes=db.scalar(select(func.count()).select_from(Dispute).where(Dispute.memo_id.in_(mids),Dispute.status=='PENDING')),
+-                vehicles=db.scalar(select(func.count()).select_from(Link).where(Link.user_id==g.user.id,Link.status=='APPROVED')) if g.user.role=='USER' else db.scalar(select(func.count()).select_from(VehicleProfile)),
+-                recent=[serialize(db,c) for c in recent],timezone='Asia/Kolkata',financial_mode='sandbox')
++    from .member3_reporting import register_member3_reporting
++    profile=register_member3_reporting(app,engine)
+     @app.get('/api/registry')
+     @role('RTO','ADMIN')
+     def registry():
