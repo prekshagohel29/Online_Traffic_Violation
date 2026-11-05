@@ -20,6 +20,7 @@ def make_engine(url):
             connect_args={
                 "sslmode": os.getenv("DB_SSLMODE", "require"),
                 "connect_timeout": 10,
+                "prepare_threshold": None,
             },
         )
     engine = create_engine(url, **args)

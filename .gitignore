@@ -22,3 +22,7 @@ artifacts/*
 !artifacts/helmet-classifier-report.json
 # Pinned model provisioned by setup; exceeds the browser upload limit
 models/yolox.onnx
+
+# Private deployment settings and cloud credentials
+.vercel/
+CLOUD_DEMO_ACCOUNTS.md

@@ -111,7 +111,8 @@ def register_experience(app, engine):
                         )
                     )
                 ],
-                demo_enabled=app.config.get("APP_ENV") == "local",
+                demo_enabled=app.config.get("APP_ENV") == "local"
+                or app.config.get("ENABLE_DEMO_FEATURES", False),
                 note="Dataset images have no link to actual owners. Any associated demonstration identity is fictional.",
             )
 
@@ -128,11 +129,10 @@ def register_experience(app, engine):
     @app.post("/api/datasets/<ident>/example")
     @role("RTO", "ADMIN")
     def dataset_example(ident):
-        if app.config.get("APP_ENV") != "local":
-            abort(
-                403,
-                description="Example cases are restricted to local demonstration mode",
-            )
+        if app.config.get("APP_ENV") != "local" and not app.config.get(
+            "ENABLE_DEMO_FEATURES", False
+        ):
+            abort(403, description="Example cases are disabled for this deployment")
         d = json_body()
         event = request.headers.get("Idempotency-Key", "")
         if not 8 <= len(event) <= 80:
@@ -201,11 +201,10 @@ def register_experience(app, engine):
     @app.post("/api/samples/rush-hour/run")
     @role("RTO", "ADMIN")
     def run_sample():
-        if app.config.get("APP_ENV") != "local":
-            abort(
-                403,
-                description="Included sample is available in local demonstration mode",
-            )
+        if app.config.get("APP_ENV") != "local" and not app.config.get(
+            "ENABLE_DEMO_FEATURES", False
+        ):
+            abort(403, description="Included sample is disabled for this deployment")
         from pathlib import Path
         from .app import ROOT
 
@@ -222,7 +221,9 @@ def register_experience(app, engine):
                 )
             camera = db.get(Camera, "demo-camera")
             if not camera:
-                abort(409, description="Load the local demonstration data first")
+                abort(
+                    409, description="Load this deployment’s demonstration data first"
+                )
             active = db.scalar(
                 select(Job).where(
                     Job.user_id == g.user.id,

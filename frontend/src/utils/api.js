@@ -1,8 +1,10 @@
 import axios from 'axios';
 const configured = (process.env.REACT_APP_API_BASE_URL || '').replace(/\/$/, '');
 const API_BASE =
-    configured ||
-    (process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '');
+    configured === 'same-origin'
+        ? ''
+        : configured ||
+          (process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '');
 export const configurationError =
     process.env.NODE_ENV === 'production' && !configured
         ? 'The API address has not been configured. Set REACT_APP_API_BASE_URL and rebuild the website.'

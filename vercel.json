@@ -1,0 +1,24 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "web": {
+      "root": ".",
+      "runtime": "container",
+      "entrypoint": "Dockerfile.vercel",
+      "command": ["python", "-m", "deploy.web"]
+    }
+  },
+  "rewrites": [
+    {"source": "/(.*)", "destination": {"service": "web"}}
+  ],
+  "daemons": {
+    "video-worker": {
+      "root": ".",
+      "entrypoint": "Dockerfile.vercel",
+      "command": ["python", "-m", "backend.worker"],
+      "instances": {"bom1": 1},
+      "resources": {"requests": {"memory": "2Gi"}},
+      "terminationGracePeriodSeconds": 60
+    }
+  }
+}

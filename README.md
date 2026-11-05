@@ -4,6 +4,12 @@ A college project developed by **Preksha Gohel (Member 3)** for reviewing traffi
 evidence and managing project memos. **React is the only frontend framework**. A Flask API, SQLAlchemy
 database and CPU video worker support the four role portals.
 
+## Live deployment
+
+Open https://online-traffic-violation.vercel.app.
+The Vercel container and worker configuration is included in this repository.
+See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md).
+
 ## What the completed team project does
 
 - **Citizen:** registration/login/profile, verified vehicle-link requests, private

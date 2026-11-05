@@ -198,6 +198,7 @@ def create_app(overrides=None):
         FRONTEND_URL=os.getenv("FRONTEND_URL", "http://localhost:3000"),
         CORS_ORIGINS=os.getenv("CORS_ORIGINS", "http://localhost:3000").split(","),
         NOTIFICATION_MODE=os.getenv("NOTIFICATION_MODE", "preview"),
+        ENABLE_DEMO_FEATURES=os.getenv("ENABLE_DEMO_FEATURES", "0") == "1",
         MODEL_PATH=os.getenv("MODEL_PATH", str(ROOT / "models" / "yolox.onnx")),
         CAMERA_SOURCES=os.getenv("CAMERA_SOURCES", "{}"),
     )

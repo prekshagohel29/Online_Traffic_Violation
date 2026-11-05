@@ -1,0 +1,28 @@
+FROM node:24-bookworm-slim AS frontend-build
+WORKDIR /build/frontend
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci --ignore-scripts --no-audit --no-fund
+COPY frontend/public ./public
+COPY frontend/src ./src
+ENV CI=true REACT_APP_API_BASE_URL=same-origin
+RUN npm run build
+
+FROM python:3.14-slim AS application
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 APP_ENV=production PORT=8080
+WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends libglib2.0-0 libgomp1 tesseract-ocr && rm -rf /var/lib/apt/lists/*
+COPY backend/requirements.txt /app/backend/requirements.txt
+RUN pip install --no-cache-dir -r backend/requirements.txt
+COPY backend ./backend
+COPY scripts ./scripts
+COPY deploy ./deploy
+COPY migrations ./migrations
+COPY models ./models
+COPY samples ./samples
+RUN python -m scripts.fetch_assets
+COPY --from=frontend-build /build/frontend/build ./frontend/build
+RUN useradd --create-home traffic && mkdir -p /app/data && chown -R traffic:traffic /app
+USER traffic
+ENV DATA_DIR=/app/data
+EXPOSE 8080
+CMD ["python", "-m", "deploy.web"]
